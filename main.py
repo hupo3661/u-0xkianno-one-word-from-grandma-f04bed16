@@ -13,6 +13,10 @@ WORD = "knowitall"
 
 
 def main() -> None:
+    if not WORD or WORD != WORD.strip() or len(WORD.split()) != 1:
+        raise SystemExit(
+            f"Invalid payload: expected exactly one non-empty word, got {WORD!r}"
+        )
     out_dir = os.environ.get("MAKEFUN_OUTPUT_DIR", "/output")
     os.makedirs(out_dir, exist_ok=True)
     path = os.path.join(out_dir, "entry.txt")
